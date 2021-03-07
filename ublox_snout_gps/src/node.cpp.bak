@@ -126,7 +126,7 @@ void UbloxNode::addProductInterface(std::string product_category,
 }
 
 void UbloxNode::getRosParams() {
-  nh->param("device", device_, std::string("/dev/ttyACM0"));
+  nh->param("device", device_, std::string("/dev/ttyUSB0"));
   nh->param("frame_id", frame_id, std::string("gps"));
 
   // Save configuration parameters
