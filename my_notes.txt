@@ -1,0 +1,18 @@
+find -type f -name '*text*' -delete
+find . -type f -name '*~*' -delete
+cd /media/paddy/BAT_01/ublox_snout-master
+cd /home/paddy/Desktop/ublox_snout-main
+
+source /opt/ros/melodic/setup.bash
+cd ~/catkin_ws/src/
+# git clone https://github.com/bao-eng/ublox.git
+git clone https://github.com/paddygoat/ublox_snout.git
+cd ublox_snout/
+git checkout `git tag | sort -V | grep -P "^2.\d+\.\d+" | tail -1`
+cd ..
+rm /home/tegwyn/catkin_ws/src/CMakeLists.txt
+catkin_init_workspace
+cd ..
+catkin_make clean
+catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
+catkin_make install
